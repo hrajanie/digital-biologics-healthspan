@@ -1,0 +1,90 @@
+{
+  "rules": "flow-slice-1.0",
+  "date": "2026-09-13",
+  "unitTests": {
+    "total": 312,
+    "passed": 312,
+    "failed": 0
+  },
+  "browserChecks": [
+    {
+      "browser": "chromium",
+      "pass": true,
+      "month": 12,
+      "health": 319.00199586763466,
+      "cash": 2669900000,
+      "commands": 14,
+      "checks": [
+        "opening",
+        "funded plan",
+        "rapid pending reload",
+        "investor settings reload",
+        "first readout",
+        "export",
+        "phone layout",
+        "failed readout import",
+        "insolvency",
+        "credits and retained study",
+        "replacement milestone",
+        "AI news destination",
+        "clinical facility navigation",
+        "completed study review"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "pass": true,
+      "month": 12,
+      "health": 319.0019958676346,
+      "cash": 2669900000,
+      "commands": 14,
+      "checks": [
+        "opening",
+        "funded plan",
+        "rapid pending reload",
+        "investor settings reload",
+        "first readout",
+        "export",
+        "phone layout",
+        "failed readout import",
+        "insolvency",
+        "credits and retained study",
+        "replacement milestone",
+        "AI news destination",
+        "clinical facility navigation",
+        "completed study review"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "pass": true,
+      "month": 12,
+      "health": 319.00199586763466,
+      "cash": 2669900000,
+      "commands": 14,
+      "checks": [
+        "opening",
+        "funded plan",
+        "rapid pending reload",
+        "investor settings reload",
+        "first readout",
+        "export",
+        "phone layout",
+        "failed readout import",
+        "insolvency",
+        "credits and retained study",
+        "replacement milestone",
+        "AI news destination",
+        "clinical facility navigation",
+        "completed study review"
+      ]
+    }
+  ],
+  "strategyRuns": 24,
+  "maxObservedSliceRuntimeMs": 47,
+  "maxObservedSaveBytes": 24362,
+  "blindTest": false,
+  "humanGate": "First treatment-route comprehension and motivation; not yet established",
+  "finalCopyCheck": "Stopped study labels unspent commitment released and no future installments; Chromium checked separately after cross-browser pass.",
+  "scope": "Original local treatment-route release before public packaging. Public build checks run again separately."
+}

@@ -1,0 +1,10 @@
+import type {Family, Stage} from '../core/types';
+export const number = (value:number, digits=1) => new Intl.NumberFormat('en-US',{notation:Math.abs(value)>=10000?'compact':'standard',maximumFractionDigits:Math.abs(value)<10?digits:1}).format(Number.isFinite(value)?value:0);
+export const money = (cents:number, precise=false) => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',notation:precise?'standard':'compact',maximumFractionDigits:precise?0:1}).format((Number.isFinite(cents)?cents:0)/100);
+export const percent = (fraction:number, digits=0) => `${(fraction*100).toFixed(digits)}%`;
+export const title = (text:string) => text.replace(/[-_]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+export const familyNames:Record<Family,string> = {diagnostics:'Precision diagnostics',clinic:'Care clinics',manufacturing:'Therapy foundry',evidence:'Evidence commons',followup:'Continuity network',network:'Regional partnership'};
+export const familyShort:Record<Family,string> = {diagnostics:'Diagnostics',clinic:'Clinics',manufacturing:'Foundry',evidence:'Evidence',followup:'Follow-up',network:'Network'};
+export const familyDescriptions:Record<Family,string> = {diagnostics:'Connect people to the right therapy.',clinic:'Turn approved therapies into actual care.',manufacturing:'Make the right treatment, for the right person.',evidence:'Convert outcomes into trusted biological knowledge.',followup:'Keep the years you add healthy.',network:'Extend a working care system to more people.'};
+export const stageNames:Record<Stage,string> = {preclinical:'Preclinical',phase1:'Phase I',phase2:'Phase II',phase3:'Phase III',approved:'Approved',platform:'Adaptive platform'};
+export const clamp = (n:number,min=0,max=1)=>Math.max(min,Math.min(max,n));

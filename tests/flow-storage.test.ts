@@ -1,0 +1,12 @@
+import {describe,it,expect} from 'vitest';
+import {createCampaign,commitPlan,advanceMonth,runToNextDecision,previewPlan} from '../src/flow/engine';
+import {parseSave,replay,writeSave} from '../src/flow/storage';
+import {semanticChecksum} from '../src/core/canonical';
+const opening=()=>commitPlan(createCampaign(),[{type:'raise',amount:5_000_000_000},{type:'license'},{type:'trial-team'},{type:'hire',people:12}]);
+describe('treatment-route persistence and replay',()=>{
+ it('restores a complete readout, with exact money, shares and monthly history',()=>{let s=advanceMonth(opening());s=commitPlan(s,[{type:'start-study',productId:'immune-reset',mode:'own'}]);while(s.status==='active')s=runToNextDecision(s);const saved=parseSave(JSON.stringify(writeSave(s)));expect(replay(saved)).toEqual(s);expect(s.status).toBe('slice-complete');});
+ it('keeps pending plans separate from committed gameplay and retains investor settings',()=>{const s=opening(),pending=[{type:'expand' as const,resource:'tests' as const}];const saved=writeSave(s,pending);saved.illustration={roundId:s.company.rounds[0].id,check:100_000_000,basis:'venture'};const parsed=parseSave(JSON.stringify(saved));expect(parsed.pending).toEqual(pending);expect(parsed.illustration).toEqual(saved.illustration);expect(replay(parsed)).toEqual(s);expect(previewPlan(s,parsed.pending).valid).toBe(true);});
+ it('rejects money tampering even if a user recomputes the integrity checksum',()=>{const saved=writeSave(opening());saved.state.company.cash+=1;saved.checksum=semanticChecksum(saved.state);expect(()=>replay(parseSave(saved))).toThrow(/replay/);});
+ it('rejects broken checksum, history, invalid illustration and other editions',()=>{const saved=writeSave(opening());expect(()=>parseSave({...saved,checksum:'wrong'})).toThrow(/integrity/);expect(()=>parseSave({...saved,format:'network'})).toThrow(/another edition/);expect(()=>parseSave({...saved,illustration:{roundId:'x',check:NaN,basis:'venture'}})).toThrow(/illustration/);saved.state.commands[0].month=1;saved.checksum=semanticChecksum(saved.state);expect(()=>replay(parseSave(saved))).toThrow(/dates/);});
+ it('replay does not reroll an AI interruption or a saved funded design project',()=>{let s=opening();for(let i=0;i<4;i++)s=advanceMonth(s);s=commitPlan(s,[{type:'lab-partnership'},{type:'update',productId:'immune-reset',choice:'parallel'}]);const restored=replay(parseSave(writeSave(s)));expect(advanceMonth(restored)).toEqual(advanceMonth(s));});
+});
