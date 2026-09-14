@@ -3,6 +3,7 @@ import {createCampaign,commitPlan,advanceQuarter,autoPlan,previewPlan,checksum} 
 import {replayCampaign} from '../src/runtime/replay';
 import {parseSave} from '../src/runtime/storage';
 describe('pinned campaign replay',()=>{
+ // This exercises an entire 96-quarter campaign and replay; allow for slower CI runners.
  it('replays the same legal transcript through 2050',()=>{
   let s=createCampaign('convergence',9031);
   for(let year=0;year<24&&s.status==='active';year++){
@@ -14,7 +15,7 @@ describe('pinned campaign replay',()=>{
   }
   const result=replayCampaign(structuredClone(s));
   expect(result.actual).toBe(result.expected);
- });
+ },15000);
  it('restores a pending annual plan without applying it twice',()=>{
   const state=createCampaign('staggered',42);
   const save=parseSave({format:'healthspan-save',version:1,savedAt:'fixture',checksum:checksum(state),state,pending:[{type:'build',regionId:state.regions[0].id,family:'clinic'}]});

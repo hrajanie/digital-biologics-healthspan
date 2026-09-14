@@ -1,0 +1,83 @@
+{
+  "date": "2026-09-14",
+  "url": "https://hrajanie.github.io/digital-biologics-healthspan/",
+  "commit": "bd9cdf619092e96da9ffdc05eba9ea3f07f635bf",
+  "browserChecks": [
+    {
+      "browser": "chromium",
+      "pass": true,
+      "month": 12,
+      "health": 319.00199586763466,
+      "cash": 2669900000,
+      "commands": 14,
+      "checks": [
+        "opening",
+        "funded plan",
+        "rapid pending reload",
+        "investor settings reload",
+        "first readout",
+        "export",
+        "phone layout",
+        "failed readout import",
+        "insolvency",
+        "credits and retained study",
+        "replacement milestone",
+        "AI news destination",
+        "clinical facility navigation",
+        "completed study review"
+      ]
+    },
+    {
+      "browser": "firefox",
+      "pass": true,
+      "month": 12,
+      "health": 319.0019958676346,
+      "cash": 2669900000,
+      "commands": 14,
+      "checks": [
+        "opening",
+        "funded plan",
+        "rapid pending reload",
+        "investor settings reload",
+        "first readout",
+        "export",
+        "phone layout",
+        "failed readout import",
+        "insolvency",
+        "credits and retained study",
+        "replacement milestone",
+        "AI news destination",
+        "clinical facility navigation",
+        "completed study review"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "pass": true,
+      "month": 12,
+      "health": 319.00199586763466,
+      "cash": 2669900000,
+      "commands": 14,
+      "checks": [
+        "opening",
+        "funded plan",
+        "rapid pending reload",
+        "investor settings reload",
+        "first readout",
+        "export",
+        "phone layout",
+        "failed readout import",
+        "insolvency",
+        "credits and retained study",
+        "replacement milestone",
+        "AI news destination",
+        "clinical facility navigation",
+        "completed study review"
+      ]
+    }
+  ],
+  "notes": [
+    "Checks used the public HTTPS deployment, including subpath assets and Web Workers.",
+    "A default five-second timeout on the earlier full-campaign replay test was exceeded on one hosted CI runner (5.39 seconds). The test now has a 15-second allowance; all assertions and game code are unchanged."
+  ]
+}
